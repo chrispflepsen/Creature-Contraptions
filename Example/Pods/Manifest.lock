@@ -1,0 +1,16 @@
+PODS:
+  - Creature-Contraptions (0.1.0)
+
+DEPENDENCIES:
+  - Creature-Contraptions (from `../`)
+
+EXTERNAL SOURCES:
+  Creature-Contraptions:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Creature-Contraptions: 7c6e88ccf2deaff7e50ee85e0d4369eada2a1cf1
+
+PODFILE CHECKSUM: 65e95b79b4e29c698cc07bc6264544e1c903cb39
+
+COCOAPODS: 1.9.1
