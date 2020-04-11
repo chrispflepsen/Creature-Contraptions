@@ -1,6 +1,0 @@
-framework module Creature_Contraptions {
-  umbrella header "Creature-Contraptions-umbrella.h"
-
-  export *
-  module * { export * }
-}

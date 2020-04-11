@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.summary          = 'A short description of Creature-Contraptions.'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Chris Pflepsen' => '' }
-  s.source           = { :git => 'https://github.com/cpflepsen/CreatureContraptions.git', :tag => s.version.to_s }
-  s.homepage         = 'https://github.com/cpflepsen/CreatureContraptions.git'
+  s.source           = { :git => 'https://github.com/chrispflepsen/CreatureContraptions.git', :tag => s.version.to_s }
+  s.homepage         = 'https://github.com/chrispflepsen/CreatureContraptions.git'
 
   s.ios.deployment_target = '13.0'
   s.source_files = 'CreatureContraptions/Classes/**/*'
