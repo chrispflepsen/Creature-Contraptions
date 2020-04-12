@@ -1,6 +1,5 @@
 //
 //  RxObjectExtensions.swift
-//  Clime
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //

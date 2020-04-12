@@ -1,6 +1,5 @@
 //
 //  UIScrollViewExtensions.swift
-//  Clime
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //
@@ -73,14 +72,13 @@ extension UIScrollView {
         guard let userInfo = notification.userInfo,
             let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue) else { return }
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame.cgRectValue, from: view.window)
-        
         if notification.name == UIResponder.keyboardWillHideNotification {
             contentInset = UIEdgeInsets(top: 0, left: 0, bottom: customBottomInset, right: 0)
         } else if notification.name == UIResponder.keyboardWillChangeFrameNotification {
             //Make sure the new frame of the keyboard is on screen
             guard keyboardViewEndFrame.origin.y < self.frame.height else { return }
             
-            let bottomInset = includeSafeArea == true ? 0 : (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0)
+            let bottomInset = includeSafeArea == true ? 0 : (UIWindow.keyWindow?.safeAreaInsets.bottom ?? 0)
             contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - bottomInset, right: 0)
             
             guard let views = views else { return }

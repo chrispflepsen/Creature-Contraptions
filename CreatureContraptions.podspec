@@ -8,12 +8,13 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CreatureContraptions'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of Creature-Contraptions.'
+  s.version          = '0.1.1'
+  s.summary          = 'A Collection of general purpose Views and Extensions'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Chris Pflepsen' => '' }
   s.source           = { :git => 'https://github.com/chrispflepsen/CreatureContraptions.git', :tag => s.version.to_s }
   s.homepage         = 'https://github.com/chrispflepsen/CreatureContraptions.git'
+  s.swift_version    = '5.0'
 
   s.ios.deployment_target = '13.0'
   s.source_files = 'CreatureContraptions/Classes/**/*'

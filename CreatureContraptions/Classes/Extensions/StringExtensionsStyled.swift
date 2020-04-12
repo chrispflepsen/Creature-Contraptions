@@ -1,6 +1,5 @@
 //
 //  String+Styled.swift
-//  Clime
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //

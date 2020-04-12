@@ -1,6 +1,5 @@
 //
 //  NSMutableAttributedString+Style.swift
-//  Clime
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //
