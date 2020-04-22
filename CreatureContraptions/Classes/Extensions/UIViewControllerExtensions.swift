@@ -1,5 +1,5 @@
 //
-//  Slider.swift
+//  UIViewControllerExtensions.swift
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //
@@ -25,32 +25,26 @@
 import Foundation
 import UIKit
 
-public class Slider: UISlider {
+public extension UIViewController {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initCommon()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initCommon()
-    }
-    
-    func initCommon() {
-        if let style = StyleRegistry.standard.style(forStylable: .slider) {
-            apply(style: style)
+    public func addFullScreen(childController: UIViewController) {
+        view.addSubview(childController.view)
+        childController.didMove(toParent: self)
+        childController.view.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
-        maximumValue = 1.0
     }
-}
-
-extension Slider: Stylable {
-    func apply(style: Style) {
-        let primaryColor = style.primaryColor
+    
+    public func remove(childController: UIViewController, animated: Bool = true) {
+        let duration = animated ? 0.3 : 0.0
         
-        thumbTintColor = primaryColor
-        minimumTrackTintColor = primaryColor.lighter()
-        maximumTrackTintColor = primaryColor.darker()
+        UIView.animate(withDuration: duration,
+                       animations: {
+                        childController.view.alpha = 0.0
+        }) { (_) in
+            childController.view.removeFromSuperview()
+            childController.removeFromParent()
+        }
     }
+    
 }
