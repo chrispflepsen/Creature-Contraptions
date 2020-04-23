@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CreatureContraptions'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'A Collection of general purpose Views and Extensions'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Chris Pflepsen' => '' }

@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-extension NSMutableAttributedString {
+public extension NSMutableAttributedString {
     
     func addParagraphSyle(alignment: NSTextAlignment?, lineSpacing: CGFloat? = nil, lineHeightMultiple: CGFloat? = nil, lineBreakMode: NSLineBreakMode?) {
         
@@ -50,19 +50,22 @@ extension NSMutableAttributedString {
         addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: length))
     }
     
-    func addFont(_ font: UIFont?) {
+    func addFont(_ font: UIFont?, range: NSRange? = nil) {
         guard let font = font else { return }
-        addAttribute(.font, value: font, range: NSRange(location: 0, length: length))
+        let range = range ?? NSRange(location: 0, length: length)
+        addAttribute(.font, value: font, range: range)
     }
     
-    func addTextColor(_ color: UIColor?) {
+    func addTextColor(_ color: UIColor?, range: NSRange? = nil) {
         guard let color = color else { return }
-        addAttribute(.foregroundColor, value: color, range: NSRange(location: 0, length: length))
+        let range = range ?? NSRange(location: 0, length: length)
+        addAttribute(.foregroundColor, value: color, range: range)
     }
     
-    func addCharacterSpacing(_ spacing: CGFloat?) {
+    func addCharacterSpacing(_ spacing: CGFloat?, range: NSRange? = nil) {
         guard let spacing = spacing else { return }
-        addAttribute(.kern, value: spacing, range: NSRange(location: 0, length: length))
+        let range = range ?? NSRange(location: 0, length: length)
+        addAttribute(.kern, value: spacing, range: range)
     }
     
 }
