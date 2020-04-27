@@ -27,7 +27,7 @@ import UIKit
 
 public extension UIViewController {
     
-    public func addFullScreen(childController: UIViewController) {
+    func addFullScreen(childController: UIViewController) {
         view.addSubview(childController.view)
         childController.didMove(toParent: self)
         childController.view.snp.makeConstraints { (make) in
@@ -35,7 +35,7 @@ public extension UIViewController {
         }
     }
     
-    public func remove(childController: UIViewController, animated: Bool = true) {
+    func remove(childController: UIViewController, animated: Bool = true) {
         let duration = animated ? 0.3 : 0.0
         
         UIView.animate(withDuration: duration,

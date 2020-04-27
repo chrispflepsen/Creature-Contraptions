@@ -24,40 +24,12 @@
 //
 
 import Foundation
+import UIKit
 
 class CreatureContraptions {
     
     static func imageFromBundle(named: String) -> UIImage {
         return UIImage(named: named) ?? UIImage()
-        
-//        let bundle = Bundle(for: CreatureContraptions.self)
-//        return UIImage(named: "ImageAssets.bundle/\(named)", in: bundle, compatibleWith: nil) ?? UIImage()
-//        return UIImage(named: "ImageAssets.bundle/\(named)", inBundle: bundle, compatibleWithTraitCollection: nil)
-        
-        
-        
-//        let defaultImage = UIImage()
-//        let image = UIImage(imageLiteralResourceName: named)
-//
-//        return image
-        
-//        let podBundle = Bundle(for: CreatureContraptions.self) // or any other class within the pod. technically doesn't have the be the same as the current file, but good practice to
-//        
-//        
-//        if let url = podBundle.url(forResource: "ImageAssets", withExtension: "bundle") {
-//            let imageBundle = Bundle(url: url)
-//            print("asdf")
-//        }
-//            
-//        
-//        guard let url = podBundle.url(forResource: "ImageAssets", withExtension: "bundle"),
-//            let imageBundle = Bundle(url: url),
-//            
-//            let retrievedImage = UIImage(named: named, in: imageBundle, compatibleWith: nil) else {
-//                return defaultImage
-//        }
-//        
-//        return retrievedImage
     }
     
 }

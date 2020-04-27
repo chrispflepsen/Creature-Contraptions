@@ -23,6 +23,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct Style {
     let primaryColor: UIColor
