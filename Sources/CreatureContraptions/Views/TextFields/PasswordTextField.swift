@@ -29,8 +29,8 @@ import RxSwift
 
 public class PasswordTextField: TextField {
     
-    private let eyeOpenImage = UIImage(systemName: "eye")
-    private let eyeClosedImage = UIImage(systemName: "eye.slash")
+    private let eyeOpenImage = CreatureContraptions.imageFromBundle(named: "eye")
+    private let eyeClosedImage = CreatureContraptions.imageFromBundle(named: "eye.slash")
     
     let showButton = UIButton()
     

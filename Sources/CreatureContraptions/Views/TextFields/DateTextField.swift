@@ -32,7 +32,7 @@ public class DateTextField: TextField {
     //Bind to me :)
     public let datePicker = UIDatePicker()
 
-    private let calendarImageView = UIImageView(image: UIImage(systemName: "calendar"))
+    private let calendarImageView = UIImageView(image: UIImage())
     private let toolbar = UIToolbar()
     private let doneButton = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
     private var doneButtonAction: (() -> Void)?

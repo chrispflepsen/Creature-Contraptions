@@ -194,14 +194,14 @@ public class FloatingPlaceholderTextField: UITextField {
     
     private func placeholderStyle() -> StringStyle {
         return style?.primaryStringStyle ?? StringStyle(font: UIFont.systemFont(ofSize: 14.0),
-                                                        textColor: .systemGray2,
+                                                        textColor: .lightGray,
                                                         characterSpacing: 1,
                                                         lineHeight: nil)
     }
     
     private func floatingPlaceholderStyle() -> StringStyle {
         return style?.secondaryStringStyle ?? StringStyle(font: UIFont.systemFont(ofSize: 10.0),
-                                                        textColor: .systemGray3,
+                                                        textColor: .darkGray,
                                                         characterSpacing: 0.5,
                                                         lineHeight: nil)
     }
