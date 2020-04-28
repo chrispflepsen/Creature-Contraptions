@@ -14,6 +14,7 @@ let package = Package(
         .package(url: "https://github.com/SnapKit/SnapKit", from: "5.0.0")
     ],
     targets: [
-        .target(name: "CreatureContraptions", dependencies: ["RxSwift", "RxCocoa", "SnapKit"]),
+        .target(name: "CreatureContraptions",
+                dependencies: ["RxSwift", "RxCocoa", "SnapKit"]),
     ]
 )

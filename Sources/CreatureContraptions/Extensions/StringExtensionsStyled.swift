@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-extension String {
+public extension String {
     
     func styled(_ style: StringStyle, alignment: NSTextAlignment = .left, lineBreakMode: NSLineBreakMode = .byWordWrapping) -> NSAttributedString {
         
