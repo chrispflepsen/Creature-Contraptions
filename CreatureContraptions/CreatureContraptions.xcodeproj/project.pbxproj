@@ -31,11 +31,8 @@
 		FB547334245765B600271809 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB547317245765B600271809 /* Slider.swift */; };
 		FB547335245765B600271809 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB547318245765B600271809 /* Button.swift */; };
 		FB547336245765B600271809 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = FB54731A245765B600271809 /* .gitkeep */; };
-		FB547337245765B600271809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB54731B245765B600271809 /* Assets.xcassets */; };
 		FB547338245765B600271809 /* RxObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB54731D245765B600271809 /* RxObject.swift */; };
 		FB547339245765B600271809 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB54731E245765B600271809 /* Coordinator.swift */; };
-		FB54733C245766B600271809 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FB54733B245766B600271809 /* RxSwift */; };
-		FB54733E245766B600271809 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FB54733D245766B600271809 /* RxCocoa */; };
 		FB547341245766F000271809 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FB547340245766F000271809 /* SnapKit */; };
 		FBC15A45245764A90037A745 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC15A44245764A90037A745 /* AppDelegate.swift */; };
 		FBC15A47245764A90037A745 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC15A46245764A90037A745 /* SceneDelegate.swift */; };
@@ -70,7 +67,6 @@
 		FB547317245765B600271809 /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		FB547318245765B600271809 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FB54731A245765B600271809 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		FB54731B245765B600271809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB54731D245765B600271809 /* RxObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxObject.swift; sourceTree = "<group>"; };
 		FB54731E245765B600271809 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FBC15A41245764A90037A745 /* CreatureContraptions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreatureContraptions.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +77,7 @@
 		FBC15A4D245764AA0037A745 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBC15A50245764AA0037A745 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBC15A52245764AA0037A745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBCDE12E245779A8004F24E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +86,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB547341245766F000271809 /* SnapKit in Frameworks */,
-				FB54733E245766B600271809 /* RxCocoa in Frameworks */,
-				FB54733C245766B600271809 /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				FB54731A245765B600271809 /* .gitkeep */,
-				FB54731B245765B600271809 /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -224,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				FBC15A43245764A90037A745 /* CreatureContraptions */,
+				FBCDE12D245779A8004F24E6 /* CreatureContraptionsAssets */,
 				FBC15A42245764A90037A745 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -251,6 +246,14 @@
 			path = CreatureContraptions;
 			sourceTree = "<group>";
 		};
+		FBCDE12D245779A8004F24E6 /* CreatureContraptionsAssets */ = {
+			isa = PBXGroup;
+			children = (
+				FBCDE12E245779A8004F24E6 /* Info.plist */,
+			);
+			path = CreatureContraptionsAssets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -268,8 +271,6 @@
 			);
 			name = CreatureContraptions;
 			packageProductDependencies = (
-				FB54733B245766B600271809 /* RxSwift */,
-				FB54733D245766B600271809 /* RxCocoa */,
 				FB547340245766F000271809 /* SnapKit */,
 			);
 			productName = CreatureContraptions;
@@ -301,7 +302,6 @@
 			);
 			mainGroup = FBC15A38245764A90037A745;
 			packageReferences = (
-				FB54733A245766B600271809 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				FB54733F245766F000271809 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = FBC15A42245764A90037A745 /* Products */;
@@ -322,7 +322,6 @@
 				FBC15A4E245764AA0037A745 /* Assets.xcassets in Resources */,
 				FBC15A4C245764A90037A745 /* Main.storyboard in Resources */,
 				FB547336245765B600271809 /* .gitkeep in Resources */,
-				FB547337245765B600271809 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,14 +559,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FB54733A245766B600271809 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
-			};
-		};
 		FB54733F245766F000271809 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -579,16 +570,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FB54733B245766B600271809 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FB54733A245766B600271809 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		FB54733D245766B600271809 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FB54733A245766B600271809 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
 		FB547340245766F000271809 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FB54733F245766F000271809 /* XCRemoteSwiftPackageReference "SnapKit" */;

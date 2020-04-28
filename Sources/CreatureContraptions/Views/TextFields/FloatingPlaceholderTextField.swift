@@ -53,7 +53,7 @@ public class FloatingPlaceholderTextField: UITextField {
 
     private let calculationQueue = DispatchQueue(label: "FloatingPlaceholderCalculations", attributes: .concurrent)
     
-    private(set) var style: Style?
+    private(set) var style: ContraptionStyle?
     
     var interceptedPlaceholder: String? {
         didSet {
@@ -134,10 +134,16 @@ public class FloatingPlaceholderTextField: UITextField {
     }
     
     func commonInit() {
-        if let style = StyleRegistry.standard.style(forStylable: .textField) {
+        if let _ = self as? PasswordTextField,
+            let style = StyleRegistry.standard.style(forStylable: .passwordTextField) {
+            apply(style: style)
+        } else if let _ = self as? DateTextField,
+            let style = StyleRegistry.standard.style(forStylable: .dateTextField) {
+            apply(style: style)
+        } else if let style = StyleRegistry.standard.style(forStylable: .textField) {
             apply(style: style)
         }
-        
+
         setupViews()
         bindUI()
     }
@@ -352,7 +358,7 @@ public class FloatingPlaceholderTextField: UITextField {
 }
 
 extension FloatingPlaceholderTextField: Stylable {
-    func apply(style: Style) {
+    func apply(style: ContraptionStyle) {
         self.style = style
     }
 }

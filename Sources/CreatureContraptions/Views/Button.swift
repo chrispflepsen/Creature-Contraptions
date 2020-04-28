@@ -149,7 +149,8 @@ public class Button: UIButton {
 }
 
 extension Button: Stylable {
-    func apply(style: Style) {
+    func apply(style: ContraptionStyle) {
+        guard let style = style as? Style else { return }
         self.style = style
     }
 }

@@ -27,6 +27,31 @@ import UIKit
 import SnapKit
 import RxSwift
 
+public struct DateTextFieldStyle: ContraptionStyle {
+    
+    public let primaryColor: UIColor
+    public let secondaryColor: UIColor?
+    public let tertiaryColor: UIColor?
+    public let errorColor: UIColor?
+    public let font: UIFont?
+    public let secondaryFont: UIFont?
+    public let primaryStringStyle: StringStyle?
+    public let secondaryStringStyle: StringStyle?
+    public let calendarImage: UIImage?
+    
+    public init(baseStyle: ContraptionStyle, calendarImage: UIImage?) {
+        self.primaryColor = baseStyle.primaryColor
+        self.secondaryColor = baseStyle.secondaryColor
+        self.tertiaryColor = baseStyle.tertiaryColor
+        self.errorColor = baseStyle.errorColor
+        self.font = baseStyle.font
+        self.secondaryFont = baseStyle.secondaryFont
+        self.primaryStringStyle = baseStyle.primaryStringStyle
+        self.secondaryStringStyle = baseStyle.secondaryStringStyle
+        self.calendarImage = calendarImage
+    }
+}
+
 public class DateTextField: TextField {
 
     //Bind to me :)
@@ -36,6 +61,11 @@ public class DateTextField: TextField {
     private let toolbar = UIToolbar()
     private let doneButton = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
     private var doneButtonAction: (() -> Void)?
+    
+    var dateTextFieldStyle: DateTextFieldStyle? {
+        guard let style = super.style as? DateTextFieldStyle else { return nil }
+        return style
+    }
     
     public override func setupViews() {
         super.setupViews()
@@ -57,6 +87,7 @@ public class DateTextField: TextField {
         rightView = calendarImageView
         rightViewMode = .always
         calendarImageView.tintColor = .black
+        calendarImageView.image = dateTextFieldStyle?.calendarImage
         tintColor = .clear
         
         doneButton.rx.tap.subscribe(onNext: { [weak self] (_) in

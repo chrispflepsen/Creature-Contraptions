@@ -46,7 +46,7 @@ public class Slider: UISlider {
 }
 
 extension Slider: Stylable {
-    func apply(style: Style) {
+    func apply(style: ContraptionStyle) {
         let primaryColor = style.primaryColor
         
         thumbTintColor = primaryColor

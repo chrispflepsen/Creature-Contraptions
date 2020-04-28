@@ -25,15 +25,26 @@
 import Foundation
 import UIKit
 
-public struct Style {
-    let primaryColor: UIColor
-    let secondaryColor: UIColor?
-    let tertiaryColor: UIColor?
-    let errorColor: UIColor?
-    let font: UIFont?
-    let secondaryFont: UIFont?
-    let primaryStringStyle: StringStyle?
-    let secondaryStringStyle: StringStyle?
+public protocol ContraptionStyle {
+    var primaryColor: UIColor { get }
+    var secondaryColor: UIColor? { get }
+    var tertiaryColor: UIColor? { get }
+    var errorColor: UIColor? { get }
+    var font: UIFont? { get }
+    var secondaryFont: UIFont? { get }
+    var primaryStringStyle: StringStyle? { get }
+    var secondaryStringStyle: StringStyle? { get }
+}
+
+public struct Style: ContraptionStyle {
+    public let primaryColor: UIColor
+    public let secondaryColor: UIColor?
+    public let tertiaryColor: UIColor?
+    public let errorColor: UIColor?
+    public let font: UIFont?
+    public let secondaryFont: UIFont?
+    public let primaryStringStyle: StringStyle?
+    public let secondaryStringStyle: StringStyle?
     
     public init(primaryColor: UIColor, secondaryColor: UIColor?, tertiaryColor: UIColor?, errorColor: UIColor?, font: UIFont?, secondaryFont: UIFont?, primaryStringStyle: StringStyle?, secondaryStringStyle: StringStyle?) {
         self.primaryColor = primaryColor
@@ -48,12 +59,14 @@ public struct Style {
 }
 
 protocol Stylable {
-    func apply(style: Style)
+    func apply(style: ContraptionStyle)
 }
 
 public enum StylableType: String, CaseIterable {
     case button = "button"
     case textField = "textField"
+    case passwordTextField = "passwordTextField"
+    case dateTextField = "dateTextField"
     case circleProgress = "circleProgress"
     case slider = "slider"
 }
@@ -61,13 +74,13 @@ public enum StylableType: String, CaseIterable {
 public class StyleRegistry {
     public static let standard = StyleRegistry()
     
-    private var styleDictionary = [String : Style]()
+    private var styleDictionary = [String : ContraptionStyle]()
     
-    public func register(style: Style, forStylable styleable: StylableType) {
+    public func register<T: ContraptionStyle>(style: T, forStylable styleable: StylableType) {
         styleDictionary[styleable.rawValue] = style
     }
     
-    public func style(forStylable stylable: StylableType) -> Style? {
+    public func style(forStylable stylable: StylableType) -> ContraptionStyle? {
         return styleDictionary[stylable.rawValue]
     }
 }

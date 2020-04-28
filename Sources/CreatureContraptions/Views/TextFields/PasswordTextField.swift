@@ -27,12 +27,41 @@ import UIKit
 import SnapKit
 import RxSwift
 
+public struct PasswordTextFieldStyle: ContraptionStyle {
+    
+    public let primaryColor: UIColor
+    public let secondaryColor: UIColor?
+    public let tertiaryColor: UIColor?
+    public let errorColor: UIColor?
+    public let font: UIFont?
+    public let secondaryFont: UIFont?
+    public let primaryStringStyle: StringStyle?
+    public let secondaryStringStyle: StringStyle?
+    public let passwordVisibleImage: UIImage?
+    public let passwordHiddenImage: UIImage?
+    
+    public init(baseStyle: ContraptionStyle, passwordVisibleImage: UIImage?, passwordHiddenImage: UIImage?) {
+        self.primaryColor = baseStyle.primaryColor
+        self.secondaryColor = baseStyle.secondaryColor
+        self.tertiaryColor = baseStyle.tertiaryColor
+        self.errorColor = baseStyle.errorColor
+        self.font = baseStyle.font
+        self.secondaryFont = baseStyle.secondaryFont
+        self.primaryStringStyle = baseStyle.primaryStringStyle
+        self.secondaryStringStyle = baseStyle.secondaryStringStyle
+        self.passwordVisibleImage = passwordVisibleImage
+        self.passwordHiddenImage = passwordHiddenImage
+    }
+}
+
 public class PasswordTextField: TextField {
     
-    private let eyeOpenImage = CreatureContraptions.imageFromBundle(named: "eye")
-    private let eyeClosedImage = CreatureContraptions.imageFromBundle(named: "eye.slash")
-    
     let showButton = UIButton()
+    
+    var passwordStyle: PasswordTextFieldStyle? {
+        guard let style = super.style as? PasswordTextFieldStyle else { return nil }
+        return style
+    }
     
     public override var isSecureTextEntry: Bool {
         didSet {
@@ -65,7 +94,7 @@ public class PasswordTextField: TextField {
     }
     
     private func addShowButton() {
-        showButton.setImage(eyeClosedImage, for: .normal)
+        showButton.setImage(passwordStyle?.passwordHiddenImage, for: .normal)
         showButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         rightView = showButton
         rightViewMode = .always
@@ -87,7 +116,7 @@ public class PasswordTextField: TextField {
     }
     
     private func updateIcon() {
-        let image = isSecureTextEntry ? eyeClosedImage : eyeOpenImage
+        let image = isSecureTextEntry ? passwordStyle?.passwordHiddenImage : passwordStyle?.passwordVisibleImage
         showButton.setImage(image, for: .normal)
     }
     
@@ -104,4 +133,5 @@ public class PasswordTextField: TextField {
         rect.origin.x -= 10
         return rect
     }
+    
 }
