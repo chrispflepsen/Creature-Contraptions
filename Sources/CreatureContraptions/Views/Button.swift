@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-enum TypeOfButton: String {
+public enum TypeOfButton: String {
     case bordered
     case clear
     case normal
@@ -42,7 +42,7 @@ public class Button: UIButton {
                                      primaryStringStyle: nil,
                                      secondaryStringStyle: nil)
  
-    var typeOfButton: TypeOfButton = .normal {
+    public var typeOfButton: TypeOfButton = .normal {
         didSet {
             updateTheme()
         }

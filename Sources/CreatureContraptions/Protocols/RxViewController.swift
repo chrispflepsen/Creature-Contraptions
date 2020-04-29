@@ -1,5 +1,5 @@
 //
-//  RxObject.swift
+//  RxViewController.swift
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //
@@ -26,8 +26,11 @@ import Foundation
 import UIKit
 import RxSwift
 
-public protocol RxObject: class {
+public protocol RxViewController: class {
     var bag: DisposeBag { get }
+}
+
+public protocol RxScrollingViewController: RxViewController {
     var scrollView: UIScrollView! { get }
     var containerView: UIView! { get }
 }

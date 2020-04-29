@@ -1,5 +1,5 @@
 //
-//  RxObjectExtensions.swift
+//  RxViewControllerExtensions.swift
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //
@@ -26,8 +26,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-extension RxObject where Self: UIViewController {
-    
+extension RxViewController where Self: UIViewController {
     private var recognizerName: String {
         return "tapToDismissKeyboard"
     }
@@ -54,6 +53,9 @@ extension RxObject where Self: UIViewController {
         }
         tap.isEnabled = false
     }
+}
+
+extension RxScrollingViewController where Self: UIViewController {
     
     /// Scrolls the view and will attempt fit all the views in the availible space giving prioity to the first view
     public func addKeyboardAvoidance(withViews views: [UIView]) {

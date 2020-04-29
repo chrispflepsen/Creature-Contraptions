@@ -1,5 +1,5 @@
 //
-//  DateTextField.swift
+//  DatePickerTextField.swift
 //
 //  Copyright (c) 2020 Chris Pflepsen
 //
@@ -27,52 +27,43 @@ import UIKit
 import SnapKit
 import RxSwift
 
-public struct DateTextFieldStyle: ContraptionStyle {
+public class DateTextField: DatePickerTextField {
     
-    public let primaryColor: UIColor
-    public let secondaryColor: UIColor?
-    public let tertiaryColor: UIColor?
-    public let errorColor: UIColor?
-    public let font: UIFont?
-    public let secondaryFont: UIFont?
-    public let primaryStringStyle: StringStyle?
-    public let secondaryStringStyle: StringStyle?
-    public let calendarImage: UIImage?
-    
-    public init(baseStyle: ContraptionStyle, calendarImage: UIImage?) {
-        self.primaryColor = baseStyle.primaryColor
-        self.secondaryColor = baseStyle.secondaryColor
-        self.tertiaryColor = baseStyle.tertiaryColor
-        self.errorColor = baseStyle.errorColor
-        self.font = baseStyle.font
-        self.secondaryFont = baseStyle.secondaryFont
-        self.primaryStringStyle = baseStyle.primaryStringStyle
-        self.secondaryStringStyle = baseStyle.secondaryStringStyle
-        self.calendarImage = calendarImage
-    }
-}
-
-public class DateTextField: TextField {
-
-    //Bind to me :)
-    public let datePicker = UIDatePicker()
-
-    private let calendarImageView = UIImageView(image: UIImage())
-    private let toolbar = UIToolbar()
-    private let doneButton = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
-    private var doneButtonAction: (() -> Void)?
-    
-    var dateTextFieldStyle: DateTextFieldStyle? {
-        guard let style = super.style as? DateTextFieldStyle else { return nil }
-        return style
-    }
-    
-    public override func setupViews() {
+    override public func setupViews() {
         super.setupViews()
         
         datePicker.datePickerMode = .date
         datePicker.setDate(Date(timeIntervalSinceReferenceDate: 0), animated: false)
         datePicker.maximumDate = Date()
+    }
+    
+}
+
+public class TimeTextField: DatePickerTextField {
+    
+    override public func setupViews() {
+        super.setupViews()
+        
+        datePicker.datePickerMode = .time
+        datePicker.minuteInterval = 15
+    }
+}
+
+public class DatePickerTextField: TextField {
+    
+    internal let datePicker = UIDatePicker()
+    
+    private let calloutImageView = UIImageView(image: UIImage())
+    private let toolbar = UIToolbar()
+    private let doneButton = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+    private var doneButtonAction: (() -> Void)?
+    
+    public var date: Observable<Date?> {
+        return datePicker.rx.date.map { $0 }.asObservable()
+    }
+    
+    public override func setupViews() {
+        super.setupViews()
         
         toolbar.setItems([UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), doneButton], animated: false)
         toolbar.barTintColor = style?.primaryColor
@@ -82,26 +73,26 @@ public class DateTextField: TextField {
         
         self.inputAccessoryView = toolbar
         self.inputView = datePicker
-
-        calendarImageView.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        rightView = calendarImageView
+        
+        calloutImageView.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        calloutImageView.contentMode = .scaleAspectFit
+        rightView = calloutImageView
         rightViewMode = .always
-        calendarImageView.tintColor = .black
-        calendarImageView.image = dateTextFieldStyle?.calendarImage
+        calloutImageView.tintColor = .black
         tintColor = .clear
         
         doneButton.rx.tap.subscribe(onNext: { [weak self] (_) in
             self?.doneButtonAction?()
         })
-        .disposed(by: bag)
+            .disposed(by: bag)
     }
     
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false
     }
     
-    public override func bindUI() {
-        super.bindUI()
+    public func setCalloutImage(_ image: UIImage) {
+        calloutImageView.image = image
     }
     
     public func setToolbarButtonTitle(_ title: String) {
